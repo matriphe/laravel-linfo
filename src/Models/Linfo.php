@@ -14,10 +14,10 @@ class Linfo extends Model
     public function __construct()
     {
         try {
-            $linfo = new \Linfo(config('linfo.source'));
+            $linfo = new \Linfo\Linfo(config('linfo.source'));
             $linfo->scan();
             $this->setup($linfo->getInfo());
-        } catch (\LinfoFatalException $e) {
+        } catch (\Linfo\Exceptions\FatalException $e) {
             die($e->getMessage());
         }
     }
