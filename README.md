@@ -3,6 +3,8 @@ This is a Laravel 5 Wrapper for the linfo package from jrgp - https://github.com
 
 ## Installation
 
+### Composer
+
 Add the following lines to your _composer.json_ or require the package via command line `composer require linfo\laravel` and run `composer update` to load the new package. 
 
 ```json
@@ -13,11 +15,17 @@ Add the following lines to your _composer.json_ or require the package via comma
 }
 ```
 
+### ServiceProvider
+
 After this add the ServiceProvider in your _config/app.php_ in the providers array
 
 ```php
 Linfo\Laravel\LinfoServiceProvider::class,
 ```
+
+### Config
+
+The package comes with a config file that you have to publish with `artisan vendor:publish`. The source array is the original linfo config that is documented in the linfo package - change them to your needs.
 
 ## Usage
 
@@ -28,9 +36,9 @@ Now you simply can create a new instance of the delivered model with `$linfo = n
 ```php
 $linfo = new Linfo\Laravel\Models\Linfo();
 $originals = $linfo->getOriginals();
-$originalCpu = $linfo->getOriginal('Cpu');
+$originalCpu = $linfo->getOriginal('CPU');
 $attributes = $linfo->getAttributes();
-$attributeCpu = $linfo->getAttribute('cpu);
+$attributeCpu = $linfo->getAttribute('cpu');
 $processeds = $linfo->getProcesseds();
 $processedCpu = $linfo->getProcessed('cpu');
 ```
@@ -38,6 +46,7 @@ $processedCpu = $linfo->getProcessed('cpu');
 If you want to extend the attributes setter and getter you can and it's also possible to make your own processed elements - everything in the normal Laravel way.
 
 ```php
+<?php
 namespace App;
 
 use Linfo\Laravel\Models\Linfo as LinfoModel;
