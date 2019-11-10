@@ -16,6 +16,6 @@ engines:
         enabled: false
 ratings:
   paths:
-    - "src/Linfo/**.php"
+    - "src/**.php"
 exclude_paths:
   - tests/
